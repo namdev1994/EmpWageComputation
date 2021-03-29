@@ -39,3 +39,4 @@ done
 totalSalary=$(($totalEmpHrs*$empRatePerHr))
 echo $totalSalary
 echo "Daily Wages : " ${dailyWage[@]}
+echo "Employee working Days :" ${!dailyWage[@]}
