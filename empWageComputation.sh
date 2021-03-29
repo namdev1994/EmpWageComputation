@@ -1,3 +1,4 @@
+
 isFullTime=1;
 isPartTime=2;
 empRatePerHr=20
@@ -19,7 +20,11 @@ esac
 echo $empHr
 
 }
+function getEmpWage(){
 
+		empHours=$1
+		echo $(($empHours*$empRatePerHr))
+}
 
 while [[ $totalEmphrs -lt $maxHrInMonth && $totalWorkingDays -lt $numOfWorkingDays ]]
 do
@@ -28,7 +33,9 @@ do
 		empHours=$( getWorkingHours $((RANDOM%3)) )
 
 		totalEmpHrs=$(($totalEmpHrs+$empHours))
+		dailyWage[$totalWorkingDays]=$( getEmpWage $empHours)
 
 done
 totalSalary=$(($totalEmpHrs*$empRatePerHr))
 echo $totalSalary
+echo "Daily Wages : " ${dailyWage[@]}
